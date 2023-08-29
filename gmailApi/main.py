@@ -3,12 +3,13 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from fastapi import FastAPI
 from pydantic import BaseModel
-from fastapi.middleware.cors import CORSMiddleware  # Импортируйте класс CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware  
 from typing import Optional
 app = FastAPI()
 origins = [
     "http://localhost",
-    "http://localhost:8000",  # Укажите разрешенные домены
+    "http://localhost:8000",
+    "http://localhost:3000"
 ]
 
 app.add_middleware(
@@ -20,10 +21,10 @@ app.add_middleware(
 )
 smtp_server = 'smtp.gmail.com'
 smtp_port = 587
-smtp_username = "noor.village.farmer@gmail.com"
-smtp_password = "oontgzijanjtafac"
+smtp_username = "your username"
+smtp_password = "your password"
 
-from_email = 'noor.village.farmer@gmail.com'
+from_email = 'you email'
 
 class EmailData(BaseModel):
     email: str
@@ -47,21 +48,7 @@ async def send_email(data: EmailData):
         <html>
         <head>
         <style>
-     h1{
-     text-align:center;
-
-     }
-     @keyframes asa{
-     0%{
-     tranform:rotate(0deg);
-     }
-       50%{
-     tranform:rotate(360deg);
-     }
-          100%{
-     tranform:rotate(0deg);
-     }
-     }
+     h1{text-align:center;}
         </style>
         </head>
         <body>
